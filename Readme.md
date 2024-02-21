@@ -7,3 +7,11 @@ It is considered as the best option for real-time data transmission. The server 
 
 AJAX
 AJAX is based on Javascript's XmlHttpRequest Object. It is an abbreviated form of Asynchronous Javascript and XML. XmlHttpRequest Object allows execution of the Javascript without reloading the complete web page. AJAX sends and receives only a portion of the web page.
+
+
+Websocket 
+Create connection and its bi directional, it opens until task done
+
+ I'm going to implement Websocket in Node.js using Socket.io
+
+ // Read tutorial point documentation or MDN
