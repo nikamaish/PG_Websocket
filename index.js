@@ -1,51 +1,24 @@
-const express = require ('express');
+// Can't create, edit, or upload … Not enough storage. Get 100 GB of storage for ₹130.00 ₹35.00/month for 3 months.
+const http = require("http");
+const express = require("express");
+const path = require("path");
+const { Server } = require("socket.io");
 
 const app = express();
-
-const http = require('http')
-
 const server = http.createServer(app);
-
-const { Server } = require('socket.io');
-// why we wrote this line? // to import the Server class from the socket.io package
-
 const io = new Server(server);
 
-// all the socket.io logic will go here and all the http request will handled by express
+// Socket.io
+io.on("connection", (socket) => {
+  socket.on("user-message", (message) => {
+    io.emit("message", message);
+  });
+});
 
-io.on('connection',(socket)=>{
-    // console.log('A user connected', socket.id);
+app.use(express.static(path.resolve("./public")));
 
-    socket.on('user-message', (message)=>{
-        console.log('A new user message', message);
-    })
-})
+app.get("/", (req, res) => {
+  return res.sendFile("/public/index.html");
+});
 
-
-
-
-
-
-
-
-
-app.use (express.static('public')); // why we wrote this line?  // to serve static files
-// static files are files that don't change, such as images, CSS, and JavaScript files.
-
-const port = process.env.PORT || 5000;
-// why process.env.PORT? // to get the port from the environment variable, but i dont have any environment variable so it will use 5000 as default port
-
-
-
-app.get('/',(req,res)=>{
-    return res.sendFile(__dirname + '/public/index.html')
-    // why __dirname? // to get the absolute path of the directory where the currently executing script is located
-})
-
-
-
-server.listen(5000,()=>{
-
-    console.log(`server is running on ${port}`)
-    
-})
+server.listen(9000, () => console.log(`Server Started at PORT:9000`));
