@@ -73,11 +73,15 @@
 
     function sendMessage() {
       const recipient = document.getElementById("recipient").value;
+      // .value gives us the value of the input field, so that, that recipient person will receive the message
       const messageInput = document.getElementById("messageInput");
+
       const message = messageInput.value;
       socket.emit("user-message", { sender: currentUser, recipient, message });
+      // here we are sending the message to the server, so that server can send the message to the recipient, so that is why we are sending the sender, recipient, and message to the server, so that server can know who is the sender, who is the recipient, and what is the message
       messageInput.value = "";
     }
+    // what emit is doing here? it is used to send the event to the server, here user-message is event, what is event? event is a message that we are sending to the server, then why we wrote { sender: currentUser, recipient, message }? because we want to send the sender, recipient, and message to the server, so that server can know who is the sender, who is the recipient, and what is the message
   </script>
 </body>
 
