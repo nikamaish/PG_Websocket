@@ -1,12 +1,14 @@
-
+<!-- public/index.html -->
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Chat App</title>
 </head>
+
 <body>
   <h1>Personal Chat App</h1>
 
@@ -28,92 +30,56 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
+    let currentUser;
 
     function joinChat() {
-      const username = document.getElementById("username").value;
-      socket.emit("join", username);
+      currentUser = document.getElementById("username").value;
+      // .value gives us the value of the input field, so that, that username person will join the chat
+      socket.emit("join", currentUser);
+      // .emit is used to send the event to the server, here join is event, what is event? event is a message that we are sending to the server, then why we wrote currentUser? because we want to send the username to the server, so that server can know that this user has joined the chat
     }
 
     socket.on("user-list", (userList) => {
+      // Display the list of connected users, user-list is an event, and userList is the data that we are receiving from the server
       console.log("Connected Users:", userList);
     });
 
     socket.on("message", (data) => {
+      // is data callback function? yes, it is a callback function, what is a callback function? a callback function is a function that is passed as an argument to another function, and it is executed after the completion of that function, so here, we are passing a function to the on method, and that function will be executed after the completion of the on method, so that function is called a callback function, so here, data is the callback function, and it is executed after the completion of the on method, so data is the message that we are receiving from the server, so we are displaying that message to the user
+
+      // but where did it implement? it is implemented in the on method, so what is on method? on method is a method that is used to listen to the events, so here, we are listening to the message event, and when we receive the message event, we are executing the callback function, so that we can display the message to the user, so that is how it is implemented, but there is no implementation of callback function, i cant even see it? does it automatically implemented? yes, it is automatically implemented, but the functionality behind the implementation is hidden from us, so we dont need to worry about it, we just need to know that it is implemented, and it is executed after the completion of the on method, so that is how it is implemented
+
+      // what is data here? data is the message that we are receiving from the server, why we need to pass data? because we want to display the message to the user
+
+
+      // Display the message to the user
       const messagesDiv = document.getElementById("messages");
       const newMessage = document.createElement("p");
-      newMessage.textContent = `${data.sender}: ${data.message}`;
-      messagesDiv.appendChild(newMessage);
+      // why there is need to create a new element to display? what kind of dom manipulation is this? this is called dom manipulation, and it is used to create, update, and delete the elements, so here, we are creating a new paragraph element, and we are displaying the message in that paragraph element, so that is why we are creating a new element to display the message
+
+      // Display the message to both sender and recipient
+      if (data.sender === currentUser || data.recipient === currentUser) {
+        // why we havent declare sender and recipient earlier? because we dont need to declare them, we are receiving them from the server, so we dont need to declare them, we just need to use them, so that is why we havent declare them earlier, from which server socket.io or express? from the server of socket.io, so that is why we are receiving the sender and recipient from the server of socket.io
+        
+        // if the sender is the current user, then display the message to the recipient only and vice versa
+
+        newMessage.textContent = `${data.sender} to ${data.recipient}: ${data.message}`;
+        // ${data.sender} to ${data.recipient}: ${data.message}, what is it? it is a template literal, and it is used to display the message to the user, so here, we are displaying the sender, recipient, and message to the user
+        // .textContent is used to set the text content of the element, so here, we are setting the text content of the paragraph element, and we are displaying the message in that paragraph element
+
+        messagesDiv.appendChild(newMessage);
+      // each time we receive a message, we are creating a new paragraph element, and we are displaying the message in that paragraph element, and then we are appending that paragraph element to the messages div
+      }
     });
 
     function sendMessage() {
       const recipient = document.getElementById("recipient").value;
       const messageInput = document.getElementById("messageInput");
       const message = messageInput.value;
-      socket.emit("user-message", { recipient, message });
+      socket.emit("user-message", { sender: currentUser, recipient, message });
       messageInput.value = "";
     }
   </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat APP</title>
-  </head>
-  <body>
-    <h1>Chatting</h1>
-
-    <input type="text" id="message" placeholder="Enter Message" />
-    <button id="sendBtn">Send</button>
-
-    <div id="messages"></div>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      const socket = io();
-      const sendBtn = document.getElementById("sendBtn");
-      const messageInput = document.getElementById("message");
-      const allMessages = document.getElementById("messages");
-
-      socket.on("message", (message) => {
-        const p = document.createElement("p");
-        p.innerText = message;
-        allMessages.appendChild(p);
-      });
-
-      sendBtn.addEventListener("click", (e) => {
-        const message = messageInput.value;
-        console.log(message);
-        socket.emit("user-message", message);
-      });
-    </script>
-  </body>
-</html> -->
