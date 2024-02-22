@@ -1,4 +1,85 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Chat App</title>
+</head>
+<body>
+  <h1>Personal Chat App</h1>
+
+  <div>
+    <label for="username">Username: </label>
+    <input type="text" id="username" placeholder="Enter your username">
+    <button onclick="joinChat()">Join Chat</button>
+  </div>
+
+  <div id="messages"></div>
+
+  <div>
+    <label for="recipient">Recipient: </label>
+    <input type="text" id="recipient" placeholder="Enter recipient's username">
+    <input type="text" id="messageInput" placeholder="Type your message">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    function joinChat() {
+      const username = document.getElementById("username").value;
+      socket.emit("join", username);
+    }
+
+    socket.on("user-list", (userList) => {
+      console.log("Connected Users:", userList);
+    });
+
+    socket.on("message", (data) => {
+      const messagesDiv = document.getElementById("messages");
+      const newMessage = document.createElement("p");
+      newMessage.textContent = `${data.sender}: ${data.message}`;
+      messagesDiv.appendChild(newMessage);
+    });
+
+    function sendMessage() {
+      const recipient = document.getElementById("recipient").value;
+      const messageInput = document.getElementById("messageInput");
+      const message = messageInput.value;
+      socket.emit("user-message", { recipient, message });
+      messageInput.value = "";
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,4 +116,4 @@
       });
     </script>
   </body>
-</html>
+</html> -->
