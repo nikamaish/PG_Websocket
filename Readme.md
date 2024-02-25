@@ -15,7 +15,10 @@
 
 - I'm going to implement Websocket in Node.js using Socket.io
 
- Read tutorial point documentation or MDN [x]
+ Read tutorial point documentation or MDN - [x]
+ Websocket Implementation - [x]
+ HTML Implementation - [x]
+ Redis Implementation - [x]
 
 
  
