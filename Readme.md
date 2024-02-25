@@ -17,10 +17,9 @@
 
 
 - I'm going to implement Websocket in Node.js using Socket.io
-- <span style="color:green">[x]</span> Read tutorial point documentation and MDN
-- <span style="color:green">[x]</span> Websocket Implementation
-- <span style="color:green">[x]</span> HTML Implementation
-- <span style="color:green">[x]</span> Redis Implementation 
-
+- <font color="green">[x]</font> Read tutorial point documentation
+- <font color="green">[x]</font> Websocket Implementation
+- <font color="green">[x]</font> HTML Implementation
+- <font color="green">[x]</font> Redis Implementation
 
  
