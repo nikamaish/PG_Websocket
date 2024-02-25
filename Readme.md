@@ -15,11 +15,10 @@ Create connection and its bi directional, it remains open until task done
 
 
 
-
-- I'm going to implement Websocket in Node.js using Socket.io
- Read tutorial point documentation
- Websocket Implementation
- HTML Implementation
- Redis Implementation
+I'm going to implement Websocket in Node.js using Socket.io
+-Read tutorial point documentation
+-Websocket Implementation
+-HTML Implementation
+-Redis Implementation
 
  
