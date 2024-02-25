@@ -14,14 +14,23 @@
 
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
       margin: 20px;
     }
 
     h1 {
       text-align: center;
-      color: #007bff;
+      color: #3498db;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     div {
@@ -37,12 +46,20 @@
       margin-top: 5px;
       width: 100%;
       box-sizing: border-box;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
     }
 
     button {
-      background-color: #007bff;
+      background-color: #3498db;
       color: white;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
     }
 
     #messages {
@@ -50,11 +67,15 @@
       padding: 10px;
       max-height: 300px;
       overflow-y: auto;
-      background-color: white;
+      background-color: #ecf0f1;
+      border-radius: 5px;
     }
 
     p {
       margin: 5px 0;
+      background-color: #d1d8e0;
+      padding: 8px;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -71,7 +92,7 @@
       </div>
 
       <div class="col-md-8">
-        <div id="messages" class="bg-light"></div>
+        <div id="messages"></div>
         <div>
           <label for="recipient">Recipient:</label>
           <input type="text" id="recipient" class="form-control" placeholder="Enter recipient's username">
