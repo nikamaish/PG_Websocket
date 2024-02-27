@@ -1,41 +1,90 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  margin: 20px;
+}
 
-  h1 {
-    text-align: center;
-  }
+h1 {
+  text-align: center;
+  color: #075e54;
+}
 
-  div {
-    margin-bottom: 15px;
-  }
+.container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
 
-  label {
-    font-weight: bold;
-  }
+.row {
+  display: flex;
+  justify-content: space-between;
+}
 
-  input,
-  button {
-    margin-top: 5px;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-  }
+.col-md-4,
+.col-md-8 {
+  width: 48%; /* Adjust the width as needed */
+}
 
-  button {
-    background-color: #4caf50;
-    color: white;
-    cursor: pointer;
-  }
+.col-md-4 {
+  border-right: 1px solid #ddd;
+  padding-right: 15px;
+}
 
-  #messages {
-    border: 1px solid #ddd;
-    padding: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-  }
+div {
+  margin-bottom: 15px;
+}
 
-  p {
-    margin: 5px 0;
-  }
+label {
+  font-weight: bold;
+  color: #888;
+}
+
+input,
+button {
+  
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+
+
+input:focus,
+button:focus {
+  outline: none;
+  border-color: #128C7E; /* WhatsApp green */
+}
+
+button {
+  background-color: #128C7E; /* WhatsApp green */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #075e54; /* WhatsApp darker green */
+}
+
+#messages {
+  border: 1px solid #ddd;
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+p {
+  margin: 5px 0;
+  background-color: #dcf8c6; /* WhatsApp light green */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
