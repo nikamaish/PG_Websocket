@@ -35,7 +35,13 @@ Rooms and Namespaces: Socket.IO allows you to create rooms and namespaces to org
 Graceful Disconnection: The client or server can gracefully disconnect by sending a specific event.
 Unexpected Disconnection: If the connection is unexpectedly interrupted, Socket.IO attempts to reconnect automatically.
 
+- If a WebSocket connection fails mid-session, Socket.IO has built-in mechanisms to handle such disruptions gracefully. Here's how it manages these scenarios:
 
+- Automatic Reconnection
+Socket.IO provides automatic reconnection capabilities. When a connection is lost, the client attempts to reconnect to the server at regular intervals. This process continues until the connection is re-established or a specified number of attempts are reached.
+
+- Reconnection Events
+Socket.IO emits specific events during the reconnection process, allowing you to handle these events and provide feedback to the user or take other actions.
 
 
 I'm going to implement Websocket in Node.js using Socket.io
