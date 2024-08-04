@@ -14,6 +14,17 @@ AJAX is based on Javascript's XmlHttpRequest Object. It is an abbreviated form o
 Create connection and its bi directional, it remains open until task done
 
 
+# Socket.io
+
+- Socket.IO is a library that enables real-time, bidirectional and event-based communication between web clients and servers. It consists of two parts: a client-side library that runs in the browser, and a server-side library for Node.js. Both components have nearly identical APIs.
+
+Here’s a basic overview of how Socket.IO works:
+
+- Architecture
+
+## Connection Establishment:
+Transport Protocols: Socket.IO supports multiple transport protocols, including WebSocket, which is the default, and HTTP long polling as a fallback. When a client attempts to connect, Socket.IO first tries to establish a WebSocket connection, and if that fails, it falls back to HTTP long polling.
+Handshake: The client and server perform a handshake to establish the connection. This involves exchanging some initial data to set up the connection parameters.
 
 I'm going to implement Websocket in Node.js using Socket.io
 - Read tutorial point documentation
