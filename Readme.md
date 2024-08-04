@@ -20,11 +20,23 @@ Create connection and its bi directional, it remains open until task done
 
 Here’s a basic overview of how Socket.IO works:
 
-- Architecture
+## Architecture
 
-## Connection Establishment:
+### Connection Establishment:
 Transport Protocols: Socket.IO supports multiple transport protocols, including WebSocket, which is the default, and HTTP long polling as a fallback. When a client attempts to connect, Socket.IO first tries to establish a WebSocket connection, and if that fails, it falls back to HTTP long polling.
 Handshake: The client and server perform a handshake to establish the connection. This involves exchanging some initial data to set up the connection parameters.
+
+
+### Communication:
+Events: Communication between the client and server is event-driven. Both can emit and listen to events. For example, the client might emit an event called message to the server, and the server can listen for this event and respond accordingly.
+Rooms and Namespaces: Socket.IO allows you to create rooms and namespaces to organize communication. Rooms allow you to broadcast messages to a subset of connected clients, while namespaces provide a way to segment communication channels on a single connection.
+
+### Disconnection:
+Graceful Disconnection: The client or server can gracefully disconnect by sending a specific event.
+Unexpected Disconnection: If the connection is unexpectedly interrupted, Socket.IO attempts to reconnect automatically.
+
+
+
 
 I'm going to implement Websocket in Node.js using Socket.io
 - Read tutorial point documentation
